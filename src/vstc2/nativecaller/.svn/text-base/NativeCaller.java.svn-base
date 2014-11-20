@@ -1,0 +1,36 @@
+package object.p2pipcam.nativecaller;
+
+
+import android.content.Context;
+
+public class NativeCaller {
+    /** Called when the activity is first created. */	
+	static {		
+		System.loadLibrary("ffmpeg");	
+		System.loadLibrary("object_jni");		
+	}
+		
+	private static final String LOG_TAG = "NativeCaller" ;	
+	
+	public native static void StartSearch(Context object) ;	
+	public native static void StopSearch();
+	public native static void Init(Context object);
+	public native static void Free();
+	public native static int PPPPDisplayVideo(String did);
+	public native static int StartPPPP(String did, String user, String pwd);
+	public native static int StopPPPP(String did);
+	public native static int StartPPPPLivestream(Context object, String did, int streamid);
+	public native static int StopPPPPLivestream(String did);
+	public native static int PPPPPTZControl(String did, int command);
+	public native static int PPPPCameraControl(String did, int param, int value);
+	public native static int PPPPGetCGI(String did, int cgi);
+	public native static int PPPPStartAudio(String did);
+	public native static int PPPPStopAudio(String did);
+	public native static int PPPPStartTalk(String did);
+	public native static int PPPPStopTalk(String did);
+	public native static int PPPPTalkAudioData(String did, byte[] data, int len);
+	public native static int PPPPNetworkDetect();
+	public native static void PPPPInitial();
+	
+    
+}
